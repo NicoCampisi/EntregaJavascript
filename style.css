@@ -1,0 +1,10 @@
+.container{
+    width: 100%;
+    display: flex;
+    text-align: center;
+}
+
+.wrapper{
+    width: 50%;
+    margin: auto;
+}
