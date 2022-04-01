@@ -1,19 +1,55 @@
-
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora de envíos</title>
+    <title>Calcular envíos</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
+        <div class="top">
+            <h1>Ingrese hasta 5 localidades y su distancia a Morón separada por una coma</h1>
+            <h5>Ejemplo: Zárate,120</h5>
+        </div>
         <div class="wrapper">
-            <h1>Calcule el precio del envío desde Morón</h1>
-            <button class="calculateButton" onClick="calculateOne()">Un destino</button>
-            <button class="calculateManyButton" onClick="calculateMany()">Varios destinos</button>
+            <div class="inputs">
+                <div class="input">
+                    <h6>Localidad 1</h4>
+                    <input type="text" id="location1">
+                    <h6>Distancia 1</h4>
+                    <input type="number" id="distance1">
+                </div>
+                <div class="input">
+                    <h6>Localidad 2</h4>
+                    <input type="text" id="location2">
+                    <h6>Distancia 2</h4>
+                    <input type="number" id="distance2">
+                </div>
+                <div class="input">
+                    <h6>Localidad 3</h4>
+                    <input type="text" id="location3">
+                    <h6>Distancia 3</h4>
+                    <input type="number" id="distance3">
+                </div>
+                <div class="input">
+                    <h6>Localidad 4</h4>
+                    <input type="text" id="location4">
+                    <h6>Distancia 4</h4>
+                    <input type="number" id="distance4">
+                </div>
+                <div class="input">
+                    <h6>Localidad 5</h4>
+                    <input type="text" id="location5">
+                    <h6>Distancia 5</h4>
+                    <input type="number" id="distance5">
+                </div>
+            </div>
+            <button id="calculate-button">Calcular</button>
+        </div>
+        <div class="result" id="result">
+            
         </div>
     </div>
     <script src="index.js"></script>

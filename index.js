@@ -1,9 +1,4 @@
 const calculatePrice = (distance) => {
-    // <10 = gratis
-    // >=10 && <40 = 100$
-    // >=40 && <70 = 200$
-    // >=70 && <100 = 300$
-    // >=100 = 500$
     switch (true) {
         case distance < 10:
             return 0;
@@ -18,32 +13,35 @@ const calculatePrice = (distance) => {
     };
 }
 
-function calculateOne() {
-    const distance = prompt('¿A qué distancia se encuentra usted de morón?');
-    const price = calculatePrice(distance);
-    alert(`El precio de un envío a ${distance}km es de $${price}`);
-    console.log(`El precio de un envío a ${distance}km es de $${price}`);
-};
+const buildDeliveryArray = () => {
+    let deliveryArray = [];
+    for (let i = 1; i < 6; i++) {
+        const location = document.getElementById(`location${i}`).value;
+        const distance = document.getElementById(`distance${i}`).value;
+        if(location != "" && distance != ""){
+            const price = calculatePrice(distance);
+            deliveryArray.push({
+                location,
+                distance,
+                price
+            });
+        };
+    };
+    return deliveryArray;
+}
 
-function calculateMany(){
-    let distancesArray = [];
-    let pricesArray = [];
-    let totalPrice = 0;
-    const distancesNumber = prompt('¿Cuántas distancias va a ingresar?');
-    for (let i = 1; i <= distancesNumber; i++) {
-        const distance = prompt(`¿Cuál es la distancia N° ${i}?`);
-        const price = calculatePrice(distance);
-        pricesArray.push(price);
-        distancesArray.push(distance);
-    };
-    for (let j = 0; j < pricesArray.length; j++) {
-        totalPrice = totalPrice + pricesArray[j];
-    };
-    for (let k = 0; k < distancesArray.length; k++) {
-        console.log(`El precio para un envío de ${distancesArray[k]}km es de $${pricesArray[k]}`);
-    };
-    console.log(`El array de distancias es: ${distancesArray}`);
-    console.log(`El array de precios es: ${pricesArray}`);
-    console.log(`El precio total de los envíos es: $${totalPrice}`);
-    alert(`El precio total de los envíos es de $${totalPrice}`);
-};
+const parseDeliveryData = (data) => {
+    let totalPrice = 0
+    for (let i = 0; i < data.length; i++) {
+        totalPrice = totalPrice + data[i].price;        
+    }
+    return `<h3>El precio total de los envíos es de $${totalPrice}</h3>`;
+}
+
+
+const calculateButton = document.getElementById('calculate-button');
+const result = document.getElementById('result');
+calculateButton.addEventListener('click', () => {
+    const deliveryArray = buildDeliveryArray();
+    result.innerHTML = parseDeliveryData(deliveryArray);
+})

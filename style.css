@@ -1,10 +1,9 @@
-.container{
-    width: 100%;
+.inputs{
     display: flex;
-    text-align: center;
 }
 
-.wrapper{
-    width: 50%;
-    margin: auto;
+.input{
+    border: 1px solid black;
+    margin: 5px;
+    padding: 5px;
 }
